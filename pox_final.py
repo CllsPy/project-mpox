@@ -71,32 +71,28 @@ def run_simulation_with_vaccination(T, initial_conditions):
     return solution.T
 
 # Sidebar for page selection
-page = st.sidebar.selectbox("Select Page", ["Introduction", "Mpox Model Description", "Simulation", "Conclusion"])
+page = st.sidebar.selectbox("Select Page", ["Introdução", "Descrição do Modelo Mpox", "Simulação", "Conclusão"])
 
-if page == "Introduction":
-    st.title("Monkey pox (Mpox) - Introduction")
+if page == "Introdução":
+    st.title("Varíola dos Macacos (Mpox) - Introdução")
     col1, col2 = st.columns([2, 2])
     
     with col1:
-        st.write("""  Monkeypox (mpox) is a viral disease caused by the monkeypox virus, related to the smallpox virus, and primarily found in Central and West Africa. The disease typically lasts 2 to 4 weeks and is generally less severe than smallpox.  While there is no specific treatment, the smallpox vaccine offers about 85% protection against monkeypox.
-                 \n It spreads through direct contact with,  infected animals,  humans or  contaminated materials. \n And its symptoms include:  fever,  headache,  muscle aches, and a rash that progresses through various stages before scabbing. \n  """) 
+        st.write("""  A varíola dos macacos (mpox) é uma doença viral causada pelo vírus monkeypox, relacionado ao vírus da varíola, e encontrado principalmente na África Central e Ocidental. A doença geralmente dura de 2 a 4 semanas e é geralmente menos grave que a varíola. Embora não haja tratamento específico, a vacina contra varíola oferece cerca de 85% de proteção contra a varíola dos macacos.
+                 \n Ela se espalha através do contato direto com animais infectados, humanos ou materiais contaminados. \n E seus sintomas incluem: febre, dor de cabeça, dores musculares e uma erupção cutânea que progride através de vários estágios antes de formar crostas. \n  """) 
 
     with col2:
         st.write(" ")
-        st.markdown("*Mpox case, Democratic Republic of the Congo*")
+        st.markdown("*Caso de Mpox, República Democrática do Congo*")
         
         image_mpx = Image.open("files/imgs/th.jpeg") 
         st.image(image_mpx)
 
-
-
-
     st.markdown("---")
     
-    # Rest of the code remains the same...
     col1, col2 = st.columns([2, 2])
     with col1:
-        st.markdown("*Geographic distribution of reported mpox cases, Democratic Republic of the Congo, 1 January to 26 May 2024 (n=7 851)*")
+        st.markdown("*Distribuição geográfica dos casos relatados de mpox, República Democrática do Congo, 1 de janeiro a 26 de maio de 2024 (n=7 851)*")
         image_map = Image.open("files/imgs/map.png")
         st.image(image_map)
     with col2:
@@ -108,7 +104,7 @@ if page == "Introduction":
         st.write(" ")
         st.write(" ")
         st.write("""
-        - The Equateur Province has been a focal point of concern, with over 4,000 cases and more than 200 deaths reported as of August 2024.
+        - A Província de Equateur tem sido um ponto focal de preocupação, com mais de 4.000 casos e mais de 200 mortes relatadas até agosto de 2024.
         """)
 
     st.markdown("---")
@@ -116,9 +112,9 @@ if page == "Introduction":
     col1, col2 = st.columns([2, 2])
     with col1:
         st.write(" " * 6)
-        st.write("- Data suggests that the Mpox outbreak has impacted individuals across different age groups, but the majority of cases are concentrated in young adults, with males slightly more affected in some categories. This distribution provides insight into the dynamics of Mpox transmission in the region.")
+        st.write("- Os dados sugerem que o surto de Mpox afetou indivíduos de diferentes faixas etárias, mas a maioria dos casos está concentrada em adultos jovens, com homens ligeiramente mais afetados em algumas categorias. Essa distribuição fornece uma visão sobre a dinâmica da transmissão da Mpox na região.")
     with col2:
-        st.markdown("*Age and sex distribution of confirmed mpox cases, Democratic Republic of the Congo, 1 January to 26 May 2024 (n=852)")
+        st.markdown("*Distribuição por idade e sexo dos casos confirmados de mpox, República Democrática do Congo, 1 de janeiro a 26 de maio de 2024 (n=852)")
         image_age = Image.open("files/imgs/age.png")
         st.image(image_age)
 
@@ -126,33 +122,33 @@ if page == "Introduction":
 
     col1, col2 = st.columns([2, 2])
     with col1:
-        st.markdown("*Epidemic curve of reported mpox cases and the proportion of reported cases tested in the Democratic Republic of the Congo, 1 January to 26 May 2024 (n=7 851)*")
+        st.markdown("*Curva epidêmica dos casos relatados de mpox e proporção de casos testados na República Democrática do Congo, 1 de janeiro a 26 de maio de 2024 (n=7 851)*")
         image_tested = Image.open("files/imgs/tested.png")
         st.image(image_tested)
     with col2:
         st.write(" " * 4)
-        st.write("- The graph shows that the number of suspected Mpox cases fluctuated over the 20-week period, with notable peaks in weeks 8 and 19. Despite the high number of suspected cases, the proportion of cases tested remained low. Suggesting that while the outbreak was widespread, testing capacity may have been limited, potentially impacting the ability to confirm cases and respond effectively to the epidemic.")
+        st.write("- O gráfico mostra que o número de casos suspeitos de Mpox flutuou durante o período de 20 semanas, com picos notáveis nas semanas 8 e 19. Apesar do alto número de casos suspeitos, a proporção de casos testados permaneceu baixa. Sugerindo que, embora o surto tenha sido generalizado, a capacidade de teste pode ter sido limitada, potencialmente impactando a capacidade de confirmar casos e responder efetivamente à epidemia.")
 
 
-if page == "Mpox Model Description":
-    st.title("Mpox Model Description")
+if page == "Descrição do Modelo Mpox":
+    st.title("Descrição do Modelo Mpox")
     
     # Introductory text
     st.write("""
-    The transmission dynamics of Mpox in Equateur Province are modeled using a SEIR framework. This model categorizes the population into four compartments: Susceptible (S), Exposed (E), Infectious (I), and Recovered (R) and for the model with intervention a new compartment is created called Vaccinated(V).
+    A dinâmica de transmissão da Mpox na Província de Equateur é modelada usando uma estrutura SEIR. Este modelo categoriza a população em quatro compartimentos: Suscetível (S), Exposto (E), Infeccioso (I) e Recuperado (R), e para o modelo com intervenção, um novo compartimento é criado chamado Vacinado (V).
     """)
 
     # Create two columns for the model without vaccination
-    st.subheader("Model Without Vaccination")
+    st.subheader("Modelo Sem Vacinação")
     col1, col2 = st.columns([3, 1])
 
     with col1:
         # Display the image for the model without vaccination
         image1 = Image.open("files/imgs/mpox-without.jpg")
-        st.image(image1, caption="Schematic diagram of Mpox dynamics without Vaccination")
-            # Adding the formulas in LaTeX    
+        st.image(image1, caption="Diagrama esquemático da dinâmica Mpox sem Vacinação")
+        # Adding the formulas in LaTeX    
         st.write("""
-        Without vaccination, the SEIR model is governed by the following equations:
+        Sem vacinação, o modelo SEIR é governado pelas seguintes equações:
         - dS/dt = π - βSI/N - μS
         - dE/dt = βSI/N - (α + μ) E
         - dI/dt = αE - (γ + δ + μ) I
@@ -162,38 +158,34 @@ if page == "Mpox Model Description":
     with col2:
         # Explanation for the model without vaccination
         st.write("""
-        In this model: 
-        - S: Susceptible individuals
-        - E: Exposed individuals (infected but not yet infectious)
-        - I: Infectious individuals
-        - R: Recovered individuals
+        Neste modelo: 
+        - S: Indivíduos Suscetíveis
+        - E: Indivíduos Expostos (infectados mas ainda não infecciosos)
+        - I: Indivíduos Infecciosos
+        - R: Indivíduos Recuperados
 
-        Parameters:
-        - π: Recruitment rate of susceptible individuals
-        - β: Transmission rate
-        - α: Rate at which exposed individuals become infectious
-        - γ: Recovery rate
-        - δ: Disease-induced death rate
-        - μ: Natural death rate
+        Parâmetros:
+        - π: Taxa de recrutamento de indivíduos suscetíveis
+        - β: Taxa de transmissão
+        - α: Taxa na qual indivíduos expostos se tornam infecciosos
+        - γ: Taxa de recuperação
+        - δ: Taxa de morte induzida pela doença
+        - μ: Taxa de morte natural
         """)
 
-
-   
-
     st.markdown("---")  # Separator between models
-    
 
     # Create two columns for the model with vaccination
-    st.subheader("Model With Vaccination")
+    st.subheader("Modelo Com Vacinação")
     col1, col2 = st.columns([3, 1])
 
     with col1:
         # Display the image for the model with vaccination
         image2 = Image.open("files/imgs/mpox-with.jpg")
-        st.image(image2, caption="Schematic diagram of Mpox dynamics with Vaccination")
+        st.image(image2, caption="Diagrama esquemático da dinâmica Mpox com Vacinação")
         # Adding the formulas in LaTeX for vaccination
         st.write("""
-        With vaccination, the SEIR model is governed by the following equations:
+        Com vacinação, o modelo SEIR é governado pelas seguintes equações:
         - dS/dt = π - βSI/N - μS - vS
         - dV/dt = vS - (1-e) βVI/N - μV
         - dE/dt = βSI/N + (1-e) βVI/N - (α + μ) E
@@ -201,42 +193,38 @@ if page == "Mpox Model Description":
         - dR/dt = γI – μR
         """)
 
-        
     with col2:
         # Explanation for the model with vaccination
         st.write("""
-        This model includes an additional compartment:
-        - V: Vaccinated individuals
+        Este modelo inclui um compartimento adicional:
+        - V: Indivíduos Vacinados
 
-        Additional parameters:
-        - v: Vaccination rate
-        - e: Vaccine efficacy
+        Parâmetros adicionais:
+        - v: Taxa de vacinação
+        - e: Eficácia da vacina
         """)
 
-
-
-elif page == "Simulation":
-    st.title("Mpox Model Simulation")
+elif page == "Simulação":
+    st.title("Simulação do Modelo Mpox")
     col1, col2 = st.columns([3, 1])
 
     with col2:
-        st.subheader("Model Parameters")
-        st.session_state.R0 = st.number_input("Basic Reproduction Number (R0)", 1.0, 5.0, 2.4, 0.1)
-        st.session_state.infectious_period = st.number_input("Infectious Period (days)", 1, 30, 14, 1)
-        st.session_state.incubation_period = st.number_input("Incubation Period (days)", 1, 20, 8, 1)
-        st.session_state.delta = st.number_input("Disease-induced Death Rate", 0.0, 0.2, 0.064, 0.001)
-        st.session_state.birth_rate = st.number_input("Birth Rate (per 1000 per year)", 0, 100, 42, 1)
-        st.session_state.death_rate = st.number_input("Death Rate (per 1000 per year)", 0, 50, 9, 1)
+        st.subheader("Parâmetros do Modelo")
+        st.session_state.R0 = st.number_input("Número Básico de Reprodução (R0)", 1.0, 5.0, 2.4, 0.1)
+        st.session_state.infectious_period = st.number_input("Período Infeccioso (dias)", 1, 30, 14, 1)
+        st.session_state.incubation_period = st.number_input("Período de Incubação (dias)", 1, 20, 8, 1)
+        st.session_state.delta = st.number_input("Taxa de Morte Induzida pela Doença", 0.0, 0.2, 0.064, 0.001)
+        st.session_state.birth_rate = st.number_input("Taxa de Natalidade (por 1000 por ano)", 0, 100, 42, 1)
+        st.session_state.death_rate = st.number_input("Taxa de Mortalidade (por 1000 por ano)", 0, 50, 9, 1)
 
-        show_vaccination = st.checkbox("Show Vaccination Scenario")
+        show_vaccination = st.checkbox("Mostrar Cenário com Vacinação")
         if show_vaccination:
-            st.session_state.v = st.number_input("Vaccination Rate", 0.0, 0.9, 0.005, 0.001)
-            st.session_state.e = st.number_input("Vaccine Efficacy", 0.0, 1.0, 0.85, 0.01)
+            st.session_state.v = st.number_input("Taxa de Vacinação", 0.0, 0.9, 0.005, 0.001)
+            st.session_state.e = st.number_input("Eficácia da Vacina", 0.0, 1.0, 0.85, 0.01)
         else:
             st.session_state.v = 0.0
             st.session_state.e = 0.0
 
-    
     with col1:
         T = np.linspace(0, 365, 366)
 
@@ -256,95 +244,76 @@ elif page == "Simulation":
         I_peak_time = np.argmax(I)
 
         fig, ax = plt.subplots(figsize=(10, 6))
-        ax.plot(T, S, label='Susceptible', linestyle='-.', color='blue')
-        ax.plot(T, E, label='Exposed', linestyle='--', color='orange')
-        ax.plot(T, I, label='Infectious', linestyle='-', color='red')
-        ax.plot(T, R, label='Recovered', linestyle=':', color='green')
+        ax.plot(T, S, label='Suscetíveis', linestyle='-.', color='blue')
+        ax.plot(T, E, label='Expostos', linestyle='--', color='orange')
+        ax.plot(T, I, label='Infecciosos', linestyle='-', color='red')
+        ax.plot(T, R, label='Recuperados', linestyle=':', color='green')
         if show_vaccination:
-            ax.plot(T, V, label='Vaccinated', linestyle='-.', linewidth=3)
-            ax.set_title('Mpox Model with Vaccination Simulation')
+            ax.plot(T, V, label='Vacinados', linestyle='-.', linewidth=3)
+            ax.set_title('Simulação do Modelo Mpox com Vacinação')
         else:
-            ax.set_title('Mpox Model without Vaccination Simulation')
+            ax.set_title('Simulação do Modelo Mpox sem Vacinação')
 
-        # Add peak annotations
-        # ax.annotate(f'E peak: {E_peak:.4f}', xy=(E_peak_time, E_peak), xytext=(10, 10),
-        #             textcoords='offset points', ha='left', va='bottom',
-        #             bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
-        #             arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0'))
-
-        # ax.annotate(f'I peak: {I_peak:.4f}', xy=(I_peak_time, I_peak), xytext=(10, -10),
-        #             textcoords='offset points', ha='left', va='top',
-        #             bbox=dict(boxstyle='round,pad=0.5', fc='yellow', alpha=0.5),
-        #             arrowprops=dict(arrowstyle = '->', connectionstyle='arc3,rad=0'))
-
-        ax.set_xlabel('Days')
-        ax.set_ylabel('Population Proportion')
+        ax.set_xlabel('Dias')
+        ax.set_ylabel('Proporção da População')
         ax.legend()
         st.pyplot(fig)
 
-        st.subheader("Simulation Explanation")
+        st.subheader("Explicação da Simulação")
         if show_vaccination:
             st.write("""
-            The simulation displays the dynamics of the Mpox outbreak with vaccination. 
-            Including vaccination reduces the peak of infectious individuals.
+            A simulação mostra a dinâmica do surto de Mpox com vacinação. 
+            Incluir a vacinação reduz o pico de indivíduos infecciosos.
             """)
         else:
             st.write("""
-            The simulation displays the dynamics of the Mpox outbreak without vaccination. 
-            The peak of infectious individuals is higher without vaccination.
+            A simulação mostra a dinâmica do surto de Mpox sem vacinação. 
+            O pico de indivíduos infecciosos é maior sem vacinação.
             """)
         
-        st.subheader('Peak Values')
+        st.subheader('Valores de Pico')
         st.write(f"""
-                 - Peak Exposed: {E_peak:.4f} at day {E_peak_time},  
-                 - Peak Infectious: {I_peak:.4f} at day {I_peak_time}""")
-
+                 - Pico de Expostos: {E_peak:.4f} no dia {E_peak_time},  
+                 - Pico de Infecciosos: {I_peak:.4f} no dia {I_peak_time}""")
             
-            
-        st.subheader('Final Population Values')
+        st.subheader('Valores Finais da População')
         if show_vaccination:
-            st.write(f"Susceptible: {S[-1]:.4f}, Exposed: {E[-1]:.4f}, Infectious: {I[-1]:.4f}, Recovered: {R[-1]:.4f}, Vaccinated: {V[-1]:.4f}")
+            st.write(f"Suscetíveis: {S[-1]:.4f}, Expostos: {E[-1]:.4f}, Infecciosos: {I[-1]:.4f}, Recuperados: {R[-1]:.4f}, Vacinados: {V[-1]:.4f}")
         else:
-            st.write(f"Susceptible: {S[-1]:.4f}, Exposed: {E[-1]:.4f}, Infectious: {I[-1]:.4f}, Recovered: {R[-1]:.4f}")
+            st.write(f"Suscetíveis: {S[-1]:.4f}, Expostos: {E[-1]:.4f}, Infecciosos: {I[-1]:.4f}, Recuperados: {R[-1]:.4f}")
 
             
-if page == "Conclusion":
-    st.subheader("Limitations of the model")
+if page == "Conclusão":
+    st.subheader("Limitações do modelo")
 
     col1, col2 = st.columns([2, 2])
     with col1:
     # Introduction text
         st.write(""" 
-            - Homogeneous Population: Assumes equal exposure risk for all individuals, ignoring population diversity and varying transmission rates.
-            - Behavioral & Environmental Factors: Omits real-world dynamics like quarantine, behavior changes, and public health interventions.
-            - Geographic Focus: Focuses on Equateur, overlooking regional differences like insecurity in other provinces.
-            - Model Simplicity: May not work well in more complex, real-world epidemiological scenarios.
+            - População Homogênea: Assume risco de exposição igual para todos os indivíduos, ignorando a diversidade populacional e taxas de transmissão variáveis.
+            - Fatores Comportamentais e Ambientais: Omite dinâmicas do mundo real como quarentena, mudanças de comportamento e intervenções de saúde pública.
+            - Foco Geográfico: Concentra-se em Equateur, desconsiderando diferenças regionais como insegurança em outras províncias.
+            - Simplicidade do Modelo: Pode não funcionar bem em cenários epidemiológicos mais complexos do mundo real.
     """)
-        st.subheader(" Model Improvement: ")
+        st.subheader("Melhoria do Modelo:")
         st.write("""
-            - A stochastic model, like an agent-based model (ABM), offers more accurate predictions by:
-            - Modeling individual variability: Accounts for differences in behavior, location, and health.
-            - Incorporating real-time interventions: Includes effects of quarantine, lockdowns, and vaccinations.""")
+            - Um modelo estocástico, como um modelo baseado em agentes (ABM), oferece previsões mais precisas ao:
+            - Modelar variabilidade individual: Considera diferenças em comportamento, localização e saúde.
+            - Incorporar intervenções em tempo real: Inclui efeitos de quarentena, lockdowns e vacinações.""")
     with col2:
-        
-        # Adjust text to center align vertically with the image in col1
-
-        st.markdown("*Schematic representation of the Mpox model with vaccination and vertical transmission.)")
+        st.markdown("*Representação esquemática do modelo Mpox com vacinação e transmissão vertical.*")
         image_mpx = Image.open("files/imgs/cmplx.png")
         st.image(image_mpx)
     
+    st.markdown("---")  
     
-    st.markdown("---")  # Separator between models
-    # Create two columns
     col1, col2 = st.columns([2, 2])
 
-    # Map image and explanation
     with col1:
-        st.subheader("Treatment and Vaccinations")
+        st.subheader("Tratamento e Vacinações")
         image_map = Image.open("files/imgs/vaccinex.jpg")
         st.image(image_map)
     with col2:
-        # Adjust text to center align vertically with the image in col1
         st.write(" ")
         st.write(" ")
         st.write(" ")
@@ -354,53 +323,32 @@ if page == "Conclusion":
         st.write(" ")
         st.write(" ")
         st.write("""
-                 - Monkeypox treatment focuses on symptom relief, with Tecovirimat (TPOXX) used for severe cases. Supportive care is also crucial for managing complications. 
-                 - Vaccination options include the JYNNEOS vaccine, recommended for high-risk individuals, and ACAM2000, though it has more side effects.""")
+                 - O tratamento da varíola dos macacos concentra-se no alívio dos sintomas, com Tecovirimat (TPOXX) usado para casos graves. O cuidado de suporte também é crucial para gerenciar complicações. 
+                 - As opções de vacinação incluem a vacina JYNNEOS, recomendada para indivíduos de alto risco, e ACAM2000, embora tenha mais efeitos colaterais.""")
 
-    st.markdown("---")  # Separator between models
-    # # Create two columns
-    # col1, col2 = st.columns([2, 2])
-
-    # # Age image and explanation
-    # with col1:
-    #     st.write(" ")
-    #     st.write(" ")
-    #     st.write(" ")
-    #     st.write(" ")
-    #     st.write(" ")
-    #     st.write(" ")
-    #     st.write("- Overall, the data suggests that the Mpox outbreak has impacted individuals across different age groups, but the majority of cases are concentrated in young adults. The spread of the disease appears somewhat balanced between males and females, with males slightly more affected in some categories. This distribution provides insight into the dynamics of Mpox transmission in the region.")
-
-    # with col2:
-    #     # Adjust text to center align vertically with the image in col1
-    #     st.markdown("*Age and sex distribution of confirmed mpox cases, Democratic Republic of the Congo, 1 January to 26 May 2024 (n=852\\)")
-    #     image_age = Image.open("age.png")
-    #     st.image(image_age)
-    # st.markdown("---")  # Separator between models
-    # Create two columns
+    st.markdown("---")
+    
     col1, col2 = st.columns([2, 2])
 
-    # Tested image and explanation
     with col2:
-        st.subheader("Prevention and Self-care")
+        st.subheader("Prevenção e Autocuidado")
         image_tested = Image.open("files/imgs/care.jpg")
         st.image(image_tested)
     with col1:
-        # Adjust text to center align vertically with the image in col1
         st.write(" ")
         st.write(" ")      
         st.write(" ")      
         st.write(" ")      
         st.write(" ")      
         st.write("""
-                 Do 
-                 - Wash hands regularly. 
-                 - Wear a mask 
-                 - cover sores. \n
-                 Do not: 
-                 - Use over-the-counter medications for pain. 
-                 - Scratch sores or pop blisters. 
-                 - Shave over sores.""")
+                 Fazer: 
+                 - Lavar as mãos regularmente 
+                 - Usar máscara 
+                 - Cobrir as feridas \n
+                 Não fazer: 
+                 - Usar medicamentos sem prescrição para dor 
+                 - Coçar feridas ou estourar bolhas 
+                 - Fazer a barba sobre as feridas""")
 
 footer="""<style>
 a:link , a:visited{
@@ -426,7 +374,8 @@ text-align: center;
 }
 </style>
 <div class="footer">
-<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/Camillia18" target="_blank">Camillia</a></p>
+<p>Desenvolvido com ❤ por <a style='display: block; text-align: center;' href="https://github.com/Camillia18" target="_blank">Camillia</a></p>
 </div>
 """
-st.markdown(footer,unsafe_allow_html=True)       
+st.markdown(footer,unsafe_allow_html=True)
+
