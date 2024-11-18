@@ -5,7 +5,11 @@ import matplotlib.pyplot as plt
 from PIL import Image
 
 # Set page config
-st.set_page_config(page_title="Mpox Model Simulator", layout="wide")
+icon = Image.open('files/icon.png')
+st.set_page_config(
+    page_title="Mpox Model Simulator",
+    page_icon=icon, 
+    layout="wide")
 
 # Function for the model without vaccination
 def mpoxWithout(x, T):
@@ -67,10 +71,7 @@ def run_simulation_with_vaccination(T, initial_conditions):
     return solution.T
 
 # Sidebar for page selection
-page = st.sidebar.radio("Select Page", ["Introduction", "Mpox Model Description", "Simulation", "Conclusion"])
-
-
-
+page = st.sidebar.selectbox("Select Page", ["Introduction", "Mpox Model Description", "Simulation", "Conclusion"])
 
 if page == "Introduction":
     st.title("Monkey pox (Mpox) - Introduction")
@@ -84,7 +85,7 @@ if page == "Introduction":
         st.write(" ")
         st.markdown("*Mpox case, Democratic Republic of the Congo*")
         
-        image_mpx = Image.open("th.jpeg") 
+        image_mpx = Image.open("files/imgs/th.jpeg") 
         st.image(image_mpx)
 
 
@@ -96,7 +97,7 @@ if page == "Introduction":
     col1, col2 = st.columns([2, 2])
     with col1:
         st.markdown("*Geographic distribution of reported mpox cases, Democratic Republic of the Congo, 1 January to 26 May 2024 (n=7 851)*")
-        image_map = Image.open("map.png")
+        image_map = Image.open("files/imgs/map.png")
         st.image(image_map)
     with col2:
         st.write(" ")
@@ -118,7 +119,7 @@ if page == "Introduction":
         st.write("- Data suggests that the Mpox outbreak has impacted individuals across different age groups, but the majority of cases are concentrated in young adults, with males slightly more affected in some categories. This distribution provides insight into the dynamics of Mpox transmission in the region.")
     with col2:
         st.markdown("*Age and sex distribution of confirmed mpox cases, Democratic Republic of the Congo, 1 January to 26 May 2024 (n=852)")
-        image_age = Image.open("age.png")
+        image_age = Image.open("files/imgs/age.png")
         st.image(image_age)
 
     st.markdown("---")
@@ -126,7 +127,7 @@ if page == "Introduction":
     col1, col2 = st.columns([2, 2])
     with col1:
         st.markdown("*Epidemic curve of reported mpox cases and the proportion of reported cases tested in the Democratic Republic of the Congo, 1 January to 26 May 2024 (n=7 851)*")
-        image_tested = Image.open("tested.png")
+        image_tested = Image.open("files/imgs/tested.png")
         st.image(image_tested)
     with col2:
         st.write(" " * 4)
@@ -147,7 +148,7 @@ if page == "Mpox Model Description":
 
     with col1:
         # Display the image for the model without vaccination
-        image1 = Image.open("mpox without.jpg")
+        image1 = Image.open("files/imgs/mpox-without.jpg")
         st.image(image1, caption="Schematic diagram of Mpox dynamics without Vaccination")
             # Adding the formulas in LaTeX    
         st.write("""
@@ -188,7 +189,7 @@ if page == "Mpox Model Description":
 
     with col1:
         # Display the image for the model with vaccination
-        image2 = Image.open("mpox with.jpg")
+        image2 = Image.open("files/imgs/mpox-with.jpg")
         st.image(image2, caption="Schematic diagram of Mpox dynamics with Vaccination")
         # Adding the formulas in LaTeX for vaccination
         st.write("""
@@ -329,7 +330,7 @@ if page == "Conclusion":
         # Adjust text to center align vertically with the image in col1
 
         st.markdown("*Schematic representation of the Mpox model with vaccination and vertical transmission.)")
-        image_mpx = Image.open("cmplx.png")
+        image_mpx = Image.open("files/imgs/cmplx.png")
         st.image(image_mpx)
     
     
@@ -340,7 +341,7 @@ if page == "Conclusion":
     # Map image and explanation
     with col1:
         st.subheader("Treatment and Vaccinations")
-        image_map = Image.open("vaccinex.jpg")
+        image_map = Image.open("files/imgs/vaccinex.jpg")
         st.image(image_map)
     with col2:
         # Adjust text to center align vertically with the image in col1
@@ -382,7 +383,7 @@ if page == "Conclusion":
     # Tested image and explanation
     with col2:
         st.subheader("Prevention and Self-care")
-        image_tested = Image.open("care.jpg")
+        image_tested = Image.open("files/imgs/care.jpg")
         st.image(image_tested)
     with col1:
         # Adjust text to center align vertically with the image in col1
@@ -400,3 +401,32 @@ if page == "Conclusion":
                  - Use over-the-counter medications for pain. 
                  - Scratch sores or pop blisters. 
                  - Shave over sores.""")
+
+footer="""<style>
+a:link , a:visited{
+color: blue;
+background-color: transparent;
+text-decoration: underline;
+}
+
+a:hover,  a:active {
+color: red;
+background-color: transparent;
+text-decoration: underline;
+}
+
+.footer {
+position: fixed;
+left: 0;
+bottom: 0;
+width: 100%;
+background-color: white;
+color: black;
+text-align: center;
+}
+</style>
+<div class="footer">
+<p>Developed with ❤ by <a style='display: block; text-align: center;' href="https://github.com/Camillia18" target="_blank">Camillia</a></p>
+</div>
+"""
+st.markdown(footer,unsafe_allow_html=True)       
